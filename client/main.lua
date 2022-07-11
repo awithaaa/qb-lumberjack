@@ -185,7 +185,7 @@ Citizen.CreateThread(function ()
     {
       event = "qb-lumberjack:menuseller",
       icon = "Fas Fa-hands",
-      label = "Talk to farmer",
+      label = "Talk to Seller",
     },
 	},
 	distance = 2.0
