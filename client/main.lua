@@ -47,11 +47,6 @@ end)
 ------------------------------ Jack Pick----------------------
 RegisterNetEvent('qb-lumberjack:client:cutjack')
 AddEventHandler("qb-lumberjack:client:cutjack", function()
-	SetCurrentPedWeapon(PlayerPedId(), GetHashKey('WEAPON_UNARMED'))
-	local model = loadModel(GetHashKey('w_me_hatchet')
-	local axe = CreateObject(model, GetEntityCoords(PlayerPedId()), true, false, false)
-	AttachEntityToEntity(axe, PlayerPedId(), GetPedBoneIndex(PlayerPedId(), 57005), 0.09, 0.03, -0.02, -78.0, 13.0, 28.0, false, true, true, true, 0, true)
-	FreezeEntityPosition(PlayerPedId(), true)
     QBCore.Functions.Progressbar("cut_wood", Config.Alerts["cut_wood"], 4000, false, true, {
         disableMovement = true,
         disableCarMovement = true,
@@ -62,17 +57,10 @@ AddEventHandler("qb-lumberjack:client:cutjack", function()
         anim = "plyr_rear_takedown_b",
         flags = 16,
     }, {}, {}, function() 
-	StopAnimTask(ped, dict, "plyr_rear_takedown_b", 1.0)
-		TriggerServerEvent("qb-lumberjack:server:cutjack")
-		ClearPedTasks(playerPed)
-		DeleteObject(axe)
-		FreezeEntityPosition(PlayerPedId(), false)
-	end, function() -- Cancel
-		QBCore.Functions.Notify("Canceled..", "error")
-		ClearPedTasks(playerPed)
-		DeleteObject(axe)
-		FreezeEntityPosition(PlayerPedId(), false)
-	end)
+        StopAnimTask(ped, dict, "plyr_rear_takedown_b", 1.0)
+        TriggerServerEvent("qb-lumberjack:server:cutjack")
+        ClearPedTasks(playerPed)
+    end)
 end)
 
 ----------------------------Process Wood----------------------
@@ -223,3 +211,4 @@ RegisterNetEvent('qb-lumberjack:menuseller', function(data)
     }
 exports['qb-menu']:openMenu(SellerMenu)
 end)
+
