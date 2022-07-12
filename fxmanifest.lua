@@ -11,7 +11,6 @@ shared_scripts {
 
 client_scripts {
 	'client/main.lua',
-	'client/menus.lua'
 }
 
 server_script 'server/*.lua'
